@@ -1,37 +1,33 @@
-import { Component } from 'react'
 import '../stylesheets/ui.scss'
 
-export class SkiDayCount extends Component{
-    percentToDecimal(decimal){
-        return ((decimal * 100) + '%')
-    }
-    calcGoalsProgress(total, goal){
-        return this.percentToDecimal(total/goal)
-    }
-    render(){
-        return (
+const percentToDecimal = (decimal) => {
+    return ((decimal * 100) + '%')
+}
+const calcGoalsProgress = (total, goal) => {
+    return percentToDecimal(total/goal)
+}
+
+export const SkiDayCount = ({total, powder, backcountry, goal}) => (
             <div className="ski-day-count">
                 <div className="total-days">
-                    <span>{this.props.total}</span>
+                    <span>{total}</span>
                     <span>days</span>
                 </div>
                 <div className="powder-days">
-                    <span>{this.props.powder}</span>
+                    <span>{powder}</span>
                     <span>days</span>
                 </div>
                 <div className="backcountry-days">
-                    <span>{this.props.backcountry}</span>
+                    <span>{backcountry}</span>
                     <span>days</span>
                 </div>
                 <div className="backcountry-days">
                     <span>
-                        {this.calcGoalsProgress(
-                            this.props.total, 
-                            this.props.goal
+                        {calcGoalsProgress(
+                            total, 
+                            goal
                         )}
                     </span>
                 </div>
             </div>
-        )
-    }
-}
+)
